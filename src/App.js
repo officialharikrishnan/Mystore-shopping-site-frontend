@@ -1,22 +1,28 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import axios from 'axios'
 import './App.css';
+import Homepage from './pages/Homepage';
+import Login from './pages/Login';
+import Header from './sections/Header';
+import Footer from './sections/Footer';
+
 
 function App() {
-  const [state,setState]=useState()
-  function click(){
-     axios.get("/new").then((response)=>{
-      console.log(response)
-      setState(response.data)
-     })
-    
-  }
+
   return (
-    <div  className="App">
-      <h1>hello</h1>
-      <button onClick={click}>press</button>
-      <h1>{state}</h1>
-      
+    <div className="App">
+      <Header/>
+      <Router>
+        <Routes>
+
+
+          <Route path='/' element={<Homepage />} />
+
+        </Routes>
+      </Router>
+      <Footer/>
     </div>
   );
 }
