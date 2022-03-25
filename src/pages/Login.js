@@ -1,27 +1,33 @@
 import React from 'react'
+import { Container, Row, Col } from 'react-grid';
 import './Login.css'
+import image from '../image/logo.png'
 function Login() {
   return (
-    <div>
-      <form action="/action_page.php">
-        <div className="imgcontainer">
-          <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" className="avatar" />
-        </div>
-        <div className="container">
-          <label htmlFor="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required />
-          <label htmlFor="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required />
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" defaultChecked="checked" name="remember" /> Remember me
-          </label>
-        </div>
-        <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
-          <button type="button" className="cancelbtn">Cancel</button>
-          <span className="psw">Forgot <a href="#">password?</a></span>
-        </div>
-      </form>
+    <div className='loginpage'>
+      <Container>
+        <Row>
+          <Col md={6}>
+            <p id='logoname'>MY STORE</p>
+            <img id='logo' src={image} alt="" />
+          </Col>
+          <Col md={6}>
+
+            <div id="login-form" >
+              <p>Login</p>
+              <form action="">
+                <input type="text" placeholder='Email or phone' />
+                <input type="password" placeholder='Password' />
+                <button id='btn' type="submit">Go!</button>
+              </form>
+            </div>
+
+
+          </Col>
+
+        </Row>
+      </Container>
+
 
     </div>
   )
