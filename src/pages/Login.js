@@ -18,7 +18,10 @@ function Login() {
               <form action="">
                 <input type="text" placeholder='Email or phone' />
                 <input type="password" placeholder='Password' />
+                <a id='forgot' href="">Forgot password</a>  
+                <a id ="create-acc"href="/signup">Create an account</a> 
                 <button id='btn' type="submit">Go!</button>
+                <br />
               </form>
             </div>
 

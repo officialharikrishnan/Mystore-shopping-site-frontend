@@ -12,8 +12,9 @@
 }
 p{
   color: white;
-  font-weight: 700;
+  font-weight: 900;
   padding-top: 5%;
+  font-size: larger;
 }
 
 #login-form{
@@ -35,5 +36,13 @@ input{
   color: white;
   width: 80%;
   margin-left: 10%;
+  
   margin-bottom: 20%;
+}
+#forgot{
+  color: #8f8373;
+  margin-right: 3ex;
+}
+#create-acc{
+  color: #8f8373;
 }
