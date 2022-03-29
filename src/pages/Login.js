@@ -22,10 +22,9 @@ function Login () {
       headers:{'content-type' : 'application/json'},
       body:JSON.stringify({phone,password})
     };
-    fetch("/submit",requestOption).then(response=>response.json())
+    fetch("/login-submit",requestOption).then(response=>response.json())
     console.log("function called")
   }
-    // const data=new FormData (e.target)
     
       
   
@@ -41,8 +40,8 @@ function Login () {
   
               <div id="login-form" >
                 <p>Login</p>
-                <form onSubmit={componentDidMount} action="/submit" method='post' encType='application/x-www-form-urlencoded'>
-                  <input onChange={handlPhoneChange}  type="text" name='phone' id='phone' placeholder='Email or phone' />
+                <form onSubmit={componentDidMount} >
+                  <input onChange={handlPhoneChange}  type="text" name='phone' id='phone' placeholder='Phone' />
                   <input onChange={handlePasswordChange} type="password" name='password' id='password'  placeholder='Password' />
                   <a id='forgot' href="/">Forgot password</a>  
                   <a id ="create-acc"href="/signup">Create an account</a> 
