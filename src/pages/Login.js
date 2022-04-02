@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import './Login.css'
 import image from '../image/logo.png'
-import axios from 'axios'
+
 // var FormData = require('form-data');
 function Login () {
   const [phone,setPhone]=useState()

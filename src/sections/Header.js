@@ -4,7 +4,7 @@ function Header() {
   return (
     <div className='header'>
       <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand">My Store</a>
+        <a href='/' class="navbar-brand">My Store</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,7 +16,7 @@ function Header() {
               <a class="nav-link" href='/login'  >Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link">Signup</a>
+              <a href='/signup' class="nav-link">Signup</a>
             </li>
 
           </ul>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-grid';
 import './Homepage.css'
-import Login from './Login'
+
 function Homepage() {
   return (
     <div>
