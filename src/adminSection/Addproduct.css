@@ -4,12 +4,11 @@ input{
     padding: 1.5%;
     
   }
-#btn{
-    background-color: #867762;
+button{
     color: white;
     width: 80%;
     margin-left: 10%;
-    
+    background-color: #867762;
     margin-bottom: 20%;
 }
 

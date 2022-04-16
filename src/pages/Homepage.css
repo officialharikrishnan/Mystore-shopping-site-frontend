@@ -123,12 +123,13 @@
     margin-top: 1em;
   }
   
-  button {
+  /* button {
     padding: 2%;
-    background-color: #dfd;
+    background-color: #867762;
     border: none;
     border-radius: 2%;
-  }
+    
+  } */
   
   button:hover {
     bottom: 0.1em;

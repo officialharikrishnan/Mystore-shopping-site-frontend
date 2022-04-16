@@ -4,24 +4,11 @@ function Header() {
   return (
     <div className='header'>
       <nav class="navbar navbar-expand-lg navbar-light ">
-        <a href='/' class="navbar-brand">My Store</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a href='/' className="navbar-brand">My Store</a>
+        <a className='nav-item' href='/signup'>Signup</a>
+        <a className='nav-item' href='/login'  >Login</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              
-              <a class="nav-link" href='/login'  >Login</a>
-            </li>
-            <li class="nav-item">
-              <a href='/signup' class="nav-link">Signup</a>
-            </li>
-
-          </ul>
-
-        </div>
+        
       </nav>
 
 

@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
-import Axios from 'axios'
+import { useNavigate } from "react-router-dom";
+
+
 import './Addproduct.css'
 import axios from 'axios';
 function Addproduct() {
+  const Navigate=useNavigate()
   const [productName, setProductName] = useState()
   const [productDetails, setProductDetails] = useState()
   const [productPrice, setProductPrice] = useState()
   const [image1,setImage1]=useState()
   const [image2,setImage2]=useState()
+  const [btnStatus,setBtnStatus]=useState()
+  const [color,setColor]=useState()
 
 
 
@@ -31,9 +36,20 @@ function Addproduct() {
       setImage1(files1)
       setImage2(files2)
     }
-    console.log(image1);
-    console.log(image2);
-  function componentDidMount(e) {
+   async function colorChange (){
+      // console.log(status);
+      // if(Status==true){
+      //   alert("error")
+      // }else{
+      //   setColor("btn btn-success")
+
+      // }
+
+      
+    }
+    // console.log(image1);
+    // console.log(image2);
+    function componentDidMount(e) {
     e.preventDefault()
     const data=new FormData();
     data.append("Name",productName);
@@ -43,7 +59,19 @@ function Addproduct() {
     data.append("image1",image2)
 
     
-    axios.post('/admin/addproduct',data).then(res=>{console.log(res);})
+    axios.post('/admin/addproduct',data).then(res=>{
+      console.log(res.data.status);
+      // setStatus(res.data.status)
+      if(res.data.status==="true"){
+        console.log("success");
+        setColor("btn btn-success")
+        setBtnStatus("ted")
+      }else{
+        console.log("fail");
+        alert("error")
+
+      }
+    })
     
   }
   return (
@@ -59,7 +87,9 @@ function Addproduct() {
                 <input onChange={handleProductDetails} type="text" placeholder='discription' />
                 <input onChange={handleProductPrice} type="number" placeholder='price' /> <br />
                 <input type="file" name='Image' multiple accept='.jpg' onChange={e=>handleProductImage(e)}/>
-                <button type="submit" id='btn'>Submit</button>
+                {/* <button type="submit" className={color} >Submit{btnStatus}</button> */}
+                {color ? <button type='submit' className={color}>submitted</button> : <button type='submit'>Submit</button>
+                }
               </form>
 
             </div>
