@@ -1,75 +1,63 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-grid';
+import React, { useEffect, useState } from 'react'
+import { Button, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-grid-system'
 import './Homepage.css'
 
 function Homepage() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:4000/home")
+      .then((response) => response.json())
+      .then((json) => {
+        json.products.map((object) => {
+          setData((data) => [
+            ...data,
+            {
+              id: object._id,
+              Name: object.product.Name,
+              Price: object.product.Price,
+              Details: object.product.Details,
+              Image: object.product.image1
+            }
+          ]);
+        });
+      });
+  }, []);
+  console.log(data);
+
+  const tableRows = data.map(
+    (element) =>
+    (
+      <div >
+
+        <Col md={12}>
+          <div className="card">
+            <Card >
+              <h1>{element.Name}</h1>
+              <p>${element.Price}</p>
+              <p>{element.Image}</p>
+              <Button>Buy now</Button>
+            </Card>
+          </div>
+        </Col>
+
+      </div>
+    )
+
+  )
+
+  console.log(tableRows);
   return (
     <div>
       <Container>
-        <Row>
-          <Col md={4}>
-            <div className="product">
-              <div className="image-box">
-                <div className="images" id="image-1" />
-              </div>
-              <div className="text-box">
-                <h2 className="item">Orange</h2>
-                <h3 className="price">$4.99</h3>
-                <p className="description">A bag of delicious oranges!</p>
-              
-                <button type="button" name="item-1-button" id="item-1-button">Add to Cart</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4} >
-            <div className="product">
-              <div className="image-box">
-                <div className="images" id="image-1" />
-              </div>
-              <div className="text-box">
-                <h2 className="item">Orange</h2>
-                <h3 className="price">$4.99</h3>
-                <p className="description">A bag of delicious oranges!</p>
-              
-                <button type="button" name="item-1-button" id="item-1-button">Add to Cart</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4  }>
-            <div className="product">
-              <div className="image-box">
-                <div className="images" id="image-1" />
-              </div>
-              <div className="text-box">
-                <h2 className="item">Orange</h2>
-                <h3 className="price">$4.99</h3>
-                <p className="description">A bag of delicious oranges!</p>
-               
-                <button type="button" name="item-1-button" id="item-1-button">Add to Cart</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4} >
-            <div class="product">
-              <div class="image-box">
-                <div class="images" id="image-2"></div>
-              </div>
-              <div class="text-box">
-                <h2 class="item">Apple</h2>
-                <h3 class="price">$4.99</h3>
-                <p class="description">A bag of delicious apples!</p>
-                
-                  <button type="button" name="item-2-button" id="item-2-button">Add to Cart</button>
-              </div>
-            </div>
-          </Col>
+        <Row  >
+          {tableRows}
         </Row>
 
       </Container>
-
-
     </div>
   )
+
 }
 
 export default Homepage

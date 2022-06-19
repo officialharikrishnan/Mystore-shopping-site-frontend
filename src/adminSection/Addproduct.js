@@ -14,6 +14,7 @@ function Addproduct() {
   const [image2,setImage2]=useState()
   const [btnStatus,setBtnStatus]=useState()
   const [color,setColor]=useState()
+  const [errorStatus,setErrorStatus]=useState()
 
 
 
@@ -61,14 +62,14 @@ function Addproduct() {
     
     axios.post('/admin/addproduct',data).then(res=>{
       console.log(res.data.status);
-      // setStatus(res.data.status)
+      setErrorStatus(res.data.status)
       if(res.data.status==="true"){
         console.log("success");
         setColor("btn btn-success")
-        setBtnStatus("ted")
+        setBtnStatus("red")
       }else{
-        console.log("fail");
-        alert("error")
+        console.log(errorStatus);
+        alert(errorStatus)
 
       }
     })
