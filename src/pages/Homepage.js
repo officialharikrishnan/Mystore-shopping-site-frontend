@@ -33,7 +33,7 @@ function Homepage() {
         <Col md={12}>
           <div className="card">
             <Card >
-              <img src={`/uploads/${element.Image[0]}`} style={{ maxWidth: '24rem' }} alt="" />
+              <img src={`/uploads/${element.Image[0]}`} style={{ maxWidth: '16rem', margin:'15px' }} alt="" />
               <h1>{element.Name}</h1>
               <p>${element.Price}</p>
               <p>{element.Image[0]}</p>
