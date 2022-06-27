@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Image } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-grid-system'
+import {useNavigate} from 'react-router-dom'
 import './Homepage.css'
+import Viewproduct from './Viewproduct';
 
 function Homepage() {
   const [data, setData] = useState([]);
+  const [viewproduct,setViewproduct]=useState(false)
+  const [proId,setProId]=useState("")
+  const navigate=useNavigate()
   useEffect(() => {
-    fetch("http://localhost:4000/home")
+    fetch("http://localhost:4000/")
       .then((response) => response.json())
       .then((json) => {
         json.products.map((object) => {
@@ -23,7 +28,12 @@ function Homepage() {
         });
       });
   }, []);
-  console.log(data);
+   function handleViewproduct(id){
+      console.log(id);
+      setProId(id)
+      // navigate('/viewproduct')
+      setViewproduct(true)
+   }
 
   const tableRows = data.map(
     (element) =>
@@ -31,7 +41,7 @@ function Homepage() {
       <div >
 
         <Col md={12}>
-          <div className="card">
+          <div onClick={(e)=>{handleViewproduct(element.id)}} className="card">
             <Card >
               <img src={`/uploads/${element.Image[0]}`} style={{ maxWidth: '16rem', margin:'15px' }} alt="" />
               <h1>{element.Name}</h1>
@@ -47,15 +57,15 @@ function Homepage() {
 
   )
 
-  console.log(tableRows);
   return (
     <div>
-      <Container>
+      {viewproduct ? <Viewproduct proId={proId}/> :
+        <Container>
         <Row  >
           {tableRows}
         </Row>
 
-      </Container>
+      </Container>}
     </div>
   )
 

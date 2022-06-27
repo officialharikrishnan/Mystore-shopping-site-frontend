@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Header.css'
 function Header() {
+  useEffect(()=>{
+    const response = fetch("http://localhost:4000/")
+   const data = response
+   console.log(data)
+  },[])
   return (
     <div className='header'>
       <nav class="navbar navbar-expand-lg navbar-light ">

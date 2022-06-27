@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
+import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import image from '../image/logo.png'
 
@@ -7,6 +8,7 @@ import image from '../image/logo.png'
 function Login () {
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
+  const navigate=useNavigate()
  
   function handlPhoneChange(e){
     setPhone(e.target.value)
@@ -16,14 +18,22 @@ function Login () {
   }
   
   
-  function componentDidMount(){
+ async function componentDidMount(e){
+   e.preventDefault()
+   console.log("called");
     const requestOption={
       method:'POST',
       headers:{'content-type' : 'application/json'},
       body:JSON.stringify({phone,password})
     };
-    fetch("/login-submit",requestOption).then(response=>response.json())
-    console.log("function called")
+   const response = await fetch("/login-submit",requestOption)
+   const data = await response.json();
+   console.log(data.userDatas[0])
+   if(data.userDatas[0]){ 
+    navigate("/")
+   }else{
+    alert("Login failed")
+   }
   }
     
       

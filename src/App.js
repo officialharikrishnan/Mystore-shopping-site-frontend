@@ -7,6 +7,7 @@ import Header from './sections/Header';
 import Footer from './sections/Footer';
 import Signup from './pages/Signup'
 import Addproduct from './adminSection/Addproduct';
+import Viewproduct from './pages/Viewproduct';
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/admin/addproduct' element={<Addproduct/>}/>
+          <Route path='/viewproduct' element={<Viewproduct/>}/>
+
         </Routes>
       </Router>
       <Footer/>

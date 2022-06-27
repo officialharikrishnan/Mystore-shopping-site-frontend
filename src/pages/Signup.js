@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import './Signup.css'
 import image from '../image/logo.png'
+import {useNavigate} from 'react-router-dom'
 function Signup() {
   const [name,setName]=useState()
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
+  const navigate = useNavigate()
 
   function handleNameChange(e){
     setName(e.target.value)
@@ -16,16 +18,21 @@ function Signup() {
   function handlePasswordChange(e){
     setPassword(e.target.value)
   }
-  function componentDidMount(e){
+  async function componentDidMount(e){
     const requestOption={
       method:"POST",
       headers:{"content-type" : "application/json"},
       body:JSON.stringify({name,phone,password})
     };
-    fetch("signup-submit",requestOption).then(response=>response.json())
+    const response =await fetch("signup-submit",requestOption)
+    const data = await response.json();
+    console.log(data)
+    if(data){ 
+     navigate("/")
+    }else{
+     alert("Login failed")
+    }
   }
-
-
   return (
     <div className='signup-page'>
       <Container>
