@@ -1,22 +1,50 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Container, Row, Col } from 'react-grid-system'
+import SimpleImageSlider from "react-simple-image-slider";
 import './Viewproduct.css'
 import axios from 'axios'
 function Viewproduct(props) {
-    useEffect(()=>{
-        axios.get(`http://localhost:4000/viewoneproduct/${props.proId}`).then((response)=>{
+    const [product, setProduct] = useState("")
+    const [imgId,setImgId]=useState("")
+    
+    useEffect(() => {
+        axios.get(`http://localhost:4000/viewoneproduct/${props.proId}`).then((response) => {
             // const data =  response.json();
-            console.log(response.data);
+            setProduct(response.data.product)
+            setImgId(response.data.product.image1)
         })
-    },[])
+    }, [])
+    console.log(imgId);
+    const images=[
+        {
+            url : `/uploads/${imgId[0]}`
 
+        },
+        {
+            url : `/uploads/${imgId[1]}`
 
+        }
+    ]
+    return (
+        <div className='viewproduct'>
+            <Container>
+                <Row>
+                    <Col>
+                        <SimpleImageSlider
+                            width={600}
+                            height={300}
+                            images={images}
+                            showBullets={true}
+                            showNavs={true}
+                        />
+                    </Col>
+                    <Col>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    );
 
-    console.log(props.proId);
-  return (
-    <div className='viewproduct'>
-
-    </div>
-  )
 }
 
 export default Viewproduct
