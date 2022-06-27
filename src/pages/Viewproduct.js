@@ -29,16 +29,35 @@ function Viewproduct(props) {
         <div className='viewproduct'>
             <Container>
                 <Row>
-                    <Col>
+                    <Col md={6}>
                         <SimpleImageSlider
-                            width={600}
-                            height={300}
+                            width={375}
+                            height={225}
                             images={images}
                             showBullets={true}
                             showNavs={true}
+                            slideDuration={0.5}
+                            startIndex={0}
                         />
                     </Col>
+                    <Col md={6}>
+                    <h2>{product.Name}</h2>
+                    <h3>${product.Price}</h3>
+                    <button id='btnbuy' >Buy now</button>
+                    <button id='btncart'>Add to cart</button>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <section className='details'>
+                        <h4>Product Details</h4>
+                            <h6>{product.Details}</h6>
+                        </section>
+                    </Col>
                     <Col>
+                        <section className='star-rating'>
+                            
+                        </section>
                     </Col>
                 </Row>
             </Container>

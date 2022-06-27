@@ -1,0 +1,37 @@
+.viewproduct{
+    margin-top: 10%;
+}
+#btnbuy{
+    margin-top: 10%;
+    margin-left: 5%;
+    background-color: rgb(194, 98, 43);
+    color: white;
+    border-radius: 6px;
+    padding: 2%;
+    width: 30%;
+}
+#btncart{
+    margin-left: 10%;
+    background-color: rgb(172, 63, 0);
+    color: white;
+    border-radius: 6px;
+    padding: 2%;
+    width: 30%;
+}
+#btnbuy:hover{
+    cursor: pointer;
+    background-color: rgb(16, 109, 4);
+
+}
+#btncart:hover{
+    cursor: pointer;
+    background-color: rgb(16, 109, 4);
+
+}
+.details{
+    margin-top: 10%;
+    color: rgb(129, 127, 127);
+}
+.viewproduct h3{
+    color: rgb(131, 128, 128);
+}

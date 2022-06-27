@@ -4,13 +4,21 @@ input{
     padding: 1.5%;
     
   }
-button{
+#btnn{
     color: white;
     width: 80%;
     margin-left: 10%;
     background-color: #867762;
     margin-bottom: 20%;
 }
+#btnnn{
+  color: white;
+  width: 80%;
+  margin-left: 10%;
+  background-color: #867762;
+  margin-bottom: 20%;
+}
+
 
 .productform{
     background-color: rgb(188, 197, 197);

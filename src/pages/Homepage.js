@@ -58,14 +58,17 @@ function Homepage() {
   )
 
   return (
-    <div>
+    <div >
       {viewproduct ? <Viewproduct proId={proId}/> :
+          <div className='page'>
         <Container>
         <Row  >
           {tableRows}
         </Row>
 
-      </Container>}
+      </Container>
+          </div>
+      }
     </div>
   )
 

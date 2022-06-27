@@ -89,7 +89,7 @@ function Addproduct() {
                 <input onChange={handleProductPrice} type="number" placeholder='price' /> <br />
                 <input type="file" name='Image' multiple accept='.jpg' onChange={e=>handleProductImage(e)}/>
                 {/* <button type="submit" className={color} >Submit{btnStatus}</button> */}
-                {color ? <button type='submit' className={color}>submitted</button> : <button type='submit'>Submit</button>
+                {color ? <button id='btnn' type='submit' className={color}>submitted</button> : <button id='btnnn' type='submit'>Submit</button>
                 }
               </form>
 
