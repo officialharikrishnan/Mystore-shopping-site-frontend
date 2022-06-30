@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid-system'
 import SimpleImageSlider from "react-simple-image-slider";
 import './Viewproduct.css'
 import axios from 'axios'
+import { ProductContext } from '../Context/Context';
 function Viewproduct(props) {
     const [product, setProduct] = useState("")
     const [imgId,setImgId]=useState("")
-    
+    const {productId} = useContext(ProductContext)
     useEffect(() => {
-        axios.get(`http://localhost:4000/viewoneproduct/${props.proId}`).then((response) => {
+        axios.get(`http://localhost:4000/viewoneproduct/${productId}`).then((response) => {
             // const data =  response.json();
             setProduct(response.data.product)
             setImgId(response.data.product.image1)
         })
     }, [])
-    console.log(imgId);
+    console.log(productId);
     const images=[
         {
             url : `/uploads/${imgId[0]}`
-
         },
         {
             url : `/uploads/${imgId[1]}`
-
         }
     ]
     return (
@@ -43,7 +42,7 @@ function Viewproduct(props) {
                     <Col md={6}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
-                    <button id='btnbuy' >Buy now</button>
+                    <button id='btnbuy' onClick={()=>{console.log(product);}}>Buy now</button>
                     <button id='btncart'>Add to cart</button>
                     </Col>
                 </Row>
