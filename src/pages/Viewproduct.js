@@ -4,10 +4,12 @@ import SimpleImageSlider from "react-simple-image-slider";
 import './Viewproduct.css'
 import axios from 'axios'
 import { ProductContext } from '../Context/Context';
-function Viewproduct(props) {
+import {useNavigate} from "react-router-dom"
+function Viewproduct() {
     const [product, setProduct] = useState("")
     const [imgId,setImgId]=useState("")
     const {productId} = useContext(ProductContext)
+    const navigate = useNavigate()
     useEffect(() => {
         axios.get(`http://localhost:4000/viewoneproduct/${productId}`).then((response) => {
             // const data =  response.json();
@@ -42,8 +44,8 @@ function Viewproduct(props) {
                     <Col md={6}>
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
-                    <button id='btnbuy' onClick={()=>{console.log(product);}}>Buy now</button>
-                    <button id='btncart'>Add to cart</button>
+                    <button id='btnbuy' onClick={()=>{navigate("/summary")}}>Buy now</button>
+                    <button id='btncart' onClick={()=>{navigate("/cart")}}>Add to cart</button>
                     </Col>
                 </Row>
                 <Row>
@@ -64,5 +66,6 @@ function Viewproduct(props) {
     );
 
 }
+
 
 export default Viewproduct

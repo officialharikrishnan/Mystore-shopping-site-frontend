@@ -8,6 +8,8 @@ import Footer from './sections/Footer';
 import Signup from './pages/Signup'
 import Addproduct from './adminSection/Addproduct';
 import Viewproduct from './pages/Viewproduct';
+import Summary from './pages/Summary';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/admin/addproduct' element={<Addproduct/>}/>
           <Route path='/viewproduct' element={<Viewproduct/>}/>
+          <Route path='summary' element={<Summary/>}/>
+          <Route path='cart' element={<Cart/>}/>
 
         </Routes>
       </Router>
