@@ -3,12 +3,14 @@ import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import image from '../image/logo.png'
+import Loading from './Loading';
 
 // var FormData = require('form-data');
 function Login () {
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
   const navigate=useNavigate()
+  const [loading,setLoading]=useState(null)
  
   function handlPhoneChange(e){
     setPhone(e.target.value)
@@ -20,6 +22,7 @@ function Login () {
   
  async function componentDidMount(e){
    e.preventDefault()
+   setLoading(true)
    console.log("called");
     const requestOption={
       method:'POST',
@@ -35,7 +38,7 @@ function Login () {
     alert("Login failed")
    }
   }
-    
+  
       
   
     return (
@@ -62,6 +65,7 @@ function Login () {
   
   
             </Col>
+            {loading && <Loading/>}
   
           </Row>
         </Container>

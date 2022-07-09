@@ -5,9 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Context/Context';
 import './Homepage.css'
 import Cookies from 'universal-cookie';
-import Viewproduct from './Viewproduct';
-import axios from 'axios';
-const cookies=new Cookies()
+import cookies from "js-cookies";
 
 function Homepage() {
   const cookies = new Cookies();
@@ -16,8 +14,9 @@ function Homepage() {
   const [viewproduct, setViewproduct] = useState(false)
   const [proId, setProId] = useState("")
   const navigate = useNavigate()
+  
   useEffect(() => {
-    fetch("http://localhost:4000/")
+    fetch("http://localhost:4000/",{ withCredentials: true })
       .then((response) => response.json())
       .then((json) => {
         json.products.map((object) => {
@@ -33,6 +32,8 @@ function Homepage() {
           ]);
         });
       });
+      let ck = cookies.get("Name")
+    console.log(ck);
   }, []);
 
   function handleViewproduct(id) {
