@@ -4,9 +4,13 @@ import { Container, Row, Col } from 'react-grid-system'
 import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Context/Context';
 import './Homepage.css'
+import Cookies from 'universal-cookie';
 import Viewproduct from './Viewproduct';
+import axios from 'axios';
+const cookies=new Cookies()
 
 function Homepage() {
+  const cookies = new Cookies();
   const { setProductId } = useContext(ProductContext)
   const [data, setData] = useState([]);
   const [viewproduct, setViewproduct] = useState(false)
@@ -30,6 +34,7 @@ function Homepage() {
         });
       });
   }, []);
+
   function handleViewproduct(id) {
     console.log(id);
     setProId(id)
