@@ -1,22 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button, Card, Image } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Container, Row, Col } from 'react-grid-system'
 import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Context/Context';
 import './Homepage.css'
-import Cookies from 'universal-cookie';
-import cookies from "js-cookies";
 
 function Homepage() {
-  const cookies = new Cookies();
+
   const { setProductId } = useContext(ProductContext)
   const [data, setData] = useState([]);
   const [viewproduct, setViewproduct] = useState(false)
-  const [proId, setProId] = useState("")
   const navigate = useNavigate()
-  
   useEffect(() => {
-    fetch("http://localhost:4000/",{ withCredentials: true })
+    fetch("http://localhost:4000/home",{ 
+      method: "GET",
+      credentials: "include",
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }})
       .then((response) => response.json())
       .then((json) => {
         json.products.map((object) => {
@@ -32,13 +34,9 @@ function Homepage() {
           ]);
         });
       });
-      let ck = cookies.get("Name")
-    console.log(ck);
   }, []);
-
   function handleViewproduct(id) {
     console.log(id);
-    setProId(id)
     setProductId(id)
     navigate("/viewproduct")
     // navigate('/viewproduct')
