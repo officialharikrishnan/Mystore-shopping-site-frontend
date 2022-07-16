@@ -12,7 +12,7 @@ function Homepage() {
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
-    fetch("http://localhost:4000/home",{ 
+    fetch("http://localhost:4000/",{ 
       method: "GET",
       credentials: "include",
       headers: {
@@ -49,14 +49,11 @@ function Homepage() {
       <div >
 
         <Col md={12}>
-          <div onClick={(e) => { handleViewproduct(element.id) }} className="card">
-            <Card >
-              <img src={`/uploads/${element.Image[0]}`} style={{ maxWidth: '16rem', margin: '15px' }} alt="" />
-              <h1>{element.Name}</h1>
-              <p>${element.Price}</p>
-              <p>{element.Image[0]}</p>
-              <Button>Buy now</Button>
-            </Card>
+          <div className="card" onClick={(e) => { handleViewproduct(element.id) }}>
+            <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
+            <h2>{element.Name}</h2>
+            <h4>₹{element.Price}</h4>
+
           </div>
         </Col>
 
@@ -69,6 +66,7 @@ function Homepage() {
     <div className='page' >
       <Container>
         <Row  >
+        
           {tableRows}
         </Row>
 

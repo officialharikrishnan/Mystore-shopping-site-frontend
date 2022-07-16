@@ -1,0 +1,19 @@
+.qty{
+    float: left;
+    background-color: #a59885;
+    margin-left: 2%;
+    color: white;
+}
+.qty1{
+    float: left;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.product-details{
+    padding-left: 5%;
+    padding-top: 5%;
+}
+.quantity{
+    padding-left: 40%;
+    margin-top: 20%;
+}

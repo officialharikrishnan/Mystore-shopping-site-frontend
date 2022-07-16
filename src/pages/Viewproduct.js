@@ -26,6 +26,17 @@ function Viewproduct() {
             url : `/uploads/${imgId[1]}`
         }
     ]
+    const cartHandler = () =>{
+        fetch(`http://localhost:4000/cart/${productId}`,{ 
+            method: "GET",
+            credentials: "include",
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }}).then((response)=>{
+
+        })
+    }
     return (
         <div className='viewproduct'>
             <Container>
@@ -45,7 +56,7 @@ function Viewproduct() {
                     <h2>{product.Name}</h2>
                     <h3>${product.Price}</h3>
                     <button id='btnbuy' onClick={()=>{navigate("/summary")}}>Buy now</button>
-                    <button id='btncart' onClick={()=>{navigate("/cart")}}>Add to cart</button>
+                    <button id='btncart' onClick={cartHandler}>Add to cart</button>
                     </Col>
                 </Row>
                 <Row>
