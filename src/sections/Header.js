@@ -12,6 +12,8 @@ function Header() {
         <a href='/' className="navbar-brand">My Store</a>
         <a className='nav-item' href='/signup'>Signup</a>
         <a className='nav-item' href='/login'  >Login</a>
+        <a className='nav-item' href='/cart'  >Cart</a>
+
 
         
       </nav>

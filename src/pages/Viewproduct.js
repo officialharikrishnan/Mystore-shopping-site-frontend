@@ -34,6 +34,12 @@ function Viewproduct() {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               }}).then((response)=>{
+                console.log(response.status);
+                if(response.status){
+                    alert("product added to cart")
+                }else{
+                    alert("error")
+                }
 
         })
     }

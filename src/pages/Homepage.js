@@ -21,6 +21,7 @@ function Homepage() {
         }})
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         json.products.map((object) => {
           setData((data) => [
             ...data,
@@ -49,7 +50,7 @@ function Homepage() {
       <div >
 
         <Col md={12}>
-          <div className="card" onClick={(e) => { handleViewproduct(element.id) }}>
+          <div className="card" key={element._id} onClick={(e) => { handleViewproduct(element.id) }}>
             <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
             <h2>{element.Name}</h2>
             <h4>₹{element.Price}</h4>

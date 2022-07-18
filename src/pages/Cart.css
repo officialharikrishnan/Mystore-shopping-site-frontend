@@ -1,0 +1,14 @@
+.cart{
+    margin-left: 10%;
+}
+#image{
+    width: 60%;
+    height: 60%;
+}
+/* .content{
+    margin-left: 500px;
+} */
+.cards{
+    margin: 2px;
+    /* border-left: 3px solid black; */
+}
