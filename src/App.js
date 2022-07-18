@@ -11,6 +11,7 @@ import Viewproduct from './pages/Viewproduct';
 import Summary from './pages/Summary';
 import Cart from './pages/Cart';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/profile' element={<Profile/>}/>
           <Route path='/admin/addproduct' element={<Addproduct/>}/>
           <Route path='/viewproduct' element={<Viewproduct/>}/>
           <Route path='/summary' element={<Summary/>}/>
