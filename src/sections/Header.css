@@ -1,7 +1,36 @@
-.header{
+.header {
     width: 100%;
     height: 10%;
-    background-color:#867862;
+    background-color: #867862;
     color: #ffff;
     font-weight: 600;
+}
+
+.sectionTwo {
+    padding-left: 85%;
+}
+
+.sectionOne {
+    margin-right: 60%;
+    padding-top: 1%;
+}
+
+.sectionOne h3 {
+    font-weight: 700;
+}
+
+#dropdown-basic {
+    border-style: none;
+}
+
+#dropdown-basic:hover {
+    background-color: #655a4a;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
 }

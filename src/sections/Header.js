@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { Container, Row, Col } from 'react-grid-system'
+import image1 from '../image/profile-icon.png'
+import image2 from '../image/profile-icon-verified.png'
+
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Header.css'
@@ -18,26 +21,23 @@ function Header() {
         }}).then((response)=>{
           if(response.status){
             navigate('/login')
-            console.log("navigate");
+            window.location.reload()
           }else{
-            console.log("error");
+            alert("an error occurred")
           }
         })
   }
-  // if(userDetails){
-  //   setName(userDetails.name)
-  // }else{
-  //   setName("")
-  // }
+  
   return (
     <div className='header'>
-      <Row>
-        <Col md={2}>
-      <h4>Mystore</h4>
-        </Col>
-        <Col md={10}>
+      <section className='sectionOne'>
+     <a href="/dashboard"><h3 >Mystore</h3></a>
+      </section>
+      <section className='sectionTwo'>
+
       <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        {userDetails ? <img src={image2} alt=""/> : <img src={image1} alt="" />}
+      <Dropdown.Toggle  id="dropdown-basic">
         {userDetails && userDetails.name}
       </Dropdown.Toggle>
 
@@ -47,8 +47,8 @@ function Header() {
         <Dropdown.Item href="/signup">Sign up</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
-        </Col>
-      </Row>
+      </section>
+
 
 
 
