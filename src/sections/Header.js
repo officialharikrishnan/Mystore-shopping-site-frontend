@@ -1,22 +1,54 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../Context/UserContext'
+import { Container, Row, Col } from 'react-grid-system'
+
+import Dropdown from 'react-bootstrap/Dropdown';
 import './Header.css'
+import { useNavigate } from 'react-router-dom';
 function Header() {
-  useEffect(()=>{
-    const response = fetch("http://localhost:4000/")
-   const data = response
-   console.log(data)
-  },[])
+  const {userDetails} = useContext(UserContext)
+  const navigate = useNavigate()
+  function logoutHandler(){
+    fetch("http://localhost:4000/logout",{ 
+      method: "GET",
+      credentials: "include",
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }}).then((response)=>{
+          if(response.status){
+            navigate('/login')
+            console.log("navigate");
+          }else{
+            console.log("error");
+          }
+        })
+  }
+  // if(userDetails){
+  //   setName(userDetails.name)
+  // }else{
+  //   setName("")
+  // }
   return (
     <div className='header'>
-      <nav class="navbar navbar-expand-lg navbar-light ">
-        <a href='/' className="navbar-brand">My Store</a>
-        <a className='nav-item' href='/signup'>Signup</a>
-        <a className='nav-item' href='/login'  >Login</a>
-        <a className='nav-item' href='/cart'  >Cart</a>
+      <Row>
+        <Col md={2}>
+      <h4>Mystore</h4>
+        </Col>
+        <Col md={10}>
+      <Dropdown>
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
+        {userDetails && userDetails.name}
+      </Dropdown.Toggle>
 
-
-        
-      </nav>
+      <Dropdown.Menu>
+       {userDetails ? "" : <Dropdown.Item href="/login">Login</Dropdown.Item>}
+       {userDetails ?  <Dropdown.Item onClick={logoutHandler}>Log out</Dropdown.Item> : ""}
+        <Dropdown.Item href="/signup">Sign up</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+        </Col>
+      </Row>
 
 
 

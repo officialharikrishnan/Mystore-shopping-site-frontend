@@ -3,6 +3,8 @@ import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
 import image from '../image/logo.png'
+import image1 from '../image/login-icon.png'
+
 import Loading from './Loading';
 
 // var FormData = require('form-data');
@@ -33,7 +35,7 @@ function Login () {
    const data = await response.json();
    console.log(data.userDatas[0])
    if(data.userDatas[0]){ 
-    navigate("/")
+    navigate("/dashboard")
    }else{
     alert("Login failed")
    }
@@ -52,6 +54,7 @@ function Login () {
             <Col md={6}>
   
               <div id="login-form" >
+                <img id='login-form-icon' src={image1} alt="" />
                 <p>Login</p>
                 <form onSubmit={componentDidMount} >
                   <input onChange={handlPhoneChange}  type="text" name='phone' id='phone' placeholder='Phone' />

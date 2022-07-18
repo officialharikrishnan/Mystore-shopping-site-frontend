@@ -10,17 +10,19 @@ import Addproduct from './adminSection/Addproduct';
 import Viewproduct from './pages/Viewproduct';
 import Summary from './pages/Summary';
 import Cart from './pages/Cart';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
   return (
     <div className="App">
-      <Header/>
       <Router>
+      <Header/>
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/admin/addproduct' element={<Addproduct/>}/>
           <Route path='/viewproduct' element={<Viewproduct/>}/>
           <Route path='/summary' element={<Summary/>}/>

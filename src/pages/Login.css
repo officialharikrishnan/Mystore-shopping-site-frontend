@@ -17,10 +17,11 @@
 p{
   color: white;
   font-weight: 900;
-  padding-top: 5%;
   font-size: larger;
 }
-
+#login-form-icon{
+  margin-top: 20px;
+}
 #login-form{
   background-color: rgb(188, 197, 197);
   width: 100%;
