@@ -7,6 +7,7 @@ function Signup() {
   const [name,setName]=useState()
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
+  const [address,setAddress]=useState()
   const navigate = useNavigate()
 
   function handleNameChange(e){
@@ -18,17 +19,20 @@ function Signup() {
   function handlePasswordChange(e){
     setPassword(e.target.value)
   }
+  function handleAddressChange(e){
+    setAddress(e.target.value)
+  }
   async function componentDidMount(e){
     const requestOption={
       method:"POST",
       headers:{"content-type" : "application/json"},
-      body:JSON.stringify({name,phone,password})
+      body:JSON.stringify({name,phone,password,address})
     };
     const response =await fetch("signup-submit",requestOption)
     const data = await response.json();
     console.log(data)
     if(data){ 
-     navigate("/")
+     navigate("/dashboard")
     }else{
      alert("Login failed")
     }
@@ -49,6 +53,7 @@ function Signup() {
                 <input onChange={handleNameChange} name="name" type="text" placeholder='Name'/>
                 <input onChange={handlePhoneChange} name="phone" type="text" placeholder='Phone' />
                 <input onChange={handlePasswordChange} name="password" type="password" placeholder='Password' />
+                <input onChange={handleAddressChange} name="address" type="text" placeholder='Address' />
                 <a id='already-account' href="/login">I already have an account</a>
                 <button id='btn' type="submit">Signup</button>
                 <br />

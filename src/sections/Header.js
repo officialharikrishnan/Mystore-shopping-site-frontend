@@ -45,6 +45,7 @@ function Header() {
        {userDetails ? "" : <Dropdown.Item href="/login">Login</Dropdown.Item>}
         {userDetails ? "" : <Dropdown.Item href="/signup">Sign up</Dropdown.Item>}
         {userDetails ? <Dropdown.Item href="/profile">Profile</Dropdown.Item> : ""}
+        {userDetails ? <Dropdown.Item href="/cart">Cart</Dropdown.Item> : ""}
        {userDetails ?  <Dropdown.Item onClick={logoutHandler}>Log out</Dropdown.Item> : ""}
       </Dropdown.Menu>
     </Dropdown>
