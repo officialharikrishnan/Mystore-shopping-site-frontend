@@ -28,7 +28,7 @@ function Signup() {
       headers:{"content-type" : "application/json"},
       body:JSON.stringify({name,phone,password,address})
     };
-    const response =await fetch("signup-submit",requestOption)
+    const response =await fetch("/signup-submit",requestOption)
     const data = await response.json();
     console.log(data)
     if(data){ 

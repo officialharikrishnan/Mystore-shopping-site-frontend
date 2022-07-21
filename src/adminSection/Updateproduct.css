@@ -27,10 +27,9 @@ input{
     box-shadow: -5px -5px 25px rgb(128, 120, 120), 5px 5px 25px black;
     margin-top: 10%;
   
-}
+  }
 .productform h4{
-  color: white;
-  font-weight: 700;
-  padding-top: 25px;
+    color: white;
+    font-weight: 700;
+    padding-top: 25px;
 }
- 

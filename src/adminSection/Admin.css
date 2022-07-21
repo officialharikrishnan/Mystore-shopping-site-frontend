@@ -1,0 +1,44 @@
+.page{
+    margin-left: 10%;
+}
+#heading{
+    margin-right: 17%;
+}
+.btn{
+    background-color: #867762;
+    color: white;
+}
+#image{
+    max-width: 16rem;
+     margin: 15px;
+}
+.card{
+    width: 90%;
+    height: 10%;
+}
+.card h4{
+    color: #867762;
+}
+#image{
+    width: 20%;
+    height: 20%;
+}
+#edit{
+    margin-top: 50px;
+    margin-left: 200px;
+    background-color: #867762;
+    color: white;
+    border-radius: 5px;
+}
+#delete{
+    margin-top: 50px;
+    margin-left: 10px;
+    background-color: #867762;
+    color: white;
+    border-radius: 5px;
+
+    
+}
+#delete:hover{
+    background-color: red;
+}

@@ -12,6 +12,11 @@ import Summary from './pages/Summary';
 import Cart from './pages/Cart';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Updateproduct from './adminSection/Updateproduct';
+import Admin from './adminSection/Admin';
+import Allusers from './adminSection/Allusers';
+import Adminsignup from './adminSection/Adminsignup';
+import Adminlogin from './adminSection/Adminlogin';
 
 function App() {
 
@@ -25,7 +30,12 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='/admin/addproduct' element={<Addproduct/>}/>
+          <Route path='/adminDashboard/admin-signup' element={<Adminsignup/>}/>
+          <Route path='/adminDashboard' element={<Admin/>}/>
+          <Route path='/adminDashboard/admin-login' element={<Adminlogin/>}/>
+          <Route path='/adminDashboard/addproduct' element={<Addproduct/>}/>
+          <Route path='/adminDashboard/updateproduct' element={<Updateproduct/>}/>
+          <Route path='/adminDashboard/allusers' element={<Allusers/>}/>
           <Route path='/viewproduct' element={<Viewproduct/>}/>
           <Route path='/summary' element={<Summary/>}/>
           <Route path='/cart' element={<Cart/>}/>

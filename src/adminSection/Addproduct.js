@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import { useNavigate } from "react-router-dom";
 
 
 import './Addproduct.css'
 import axios from 'axios';
+import { AdminContext } from '../Context/Admin';
 function Addproduct() {
+  const {setAdmin} = useContext(AdminContext)
   const Navigate=useNavigate()
   const [productName, setProductName] = useState()
   const [productDetails, setProductDetails] = useState()
@@ -15,6 +17,9 @@ function Addproduct() {
   const [btnStatus,setBtnStatus]=useState()
   const [color,setColor]=useState()
   const [errorStatus,setErrorStatus]=useState()
+  useEffect(()=>{
+    setAdmin(true)
+  })
 
 
 
@@ -30,26 +35,9 @@ function Addproduct() {
   function handleProductImage(e){
     const files1=e.target.files[0]
     const files2=e.target.files[1]
-
-
-      // console.log(files1);
-      // console.log(files2);
       setImage1(files1)
       setImage2(files2)
     }
-   async function colorChange (){
-      // console.log(status);
-      // if(Status==true){
-      //   alert("error")
-      // }else{
-      //   setColor("btn btn-success")
-
-      // }
-
-      
-    }
-    // console.log(image1);
-    // console.log(image2);
     function componentDidMount(e) {
     e.preventDefault()
     const data=new FormData();
@@ -83,6 +71,7 @@ function Addproduct() {
           
           <Col md={6}>
             <div className="productform">
+              <h4>Add Product</h4>
               <form onSubmit={componentDidMount} enctype="multipart/form-data">
                 <input onChange={handleProductName} type="text" placeholder='Product name' />
                 <input onChange={handleProductDetails} type="text" placeholder='discription' />

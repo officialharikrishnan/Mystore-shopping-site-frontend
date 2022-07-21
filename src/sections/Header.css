@@ -3,9 +3,13 @@
     height: 10%;
     background-color: #867862;
     color: #ffff;
+}
+#header_1{
     font-weight: 600;
 }
-
+#header_2{
+    color: #aaaaaa;
+}
 .sectionTwo {
     padding-left: 70%;
 }

@@ -13,7 +13,7 @@ function Dashboard() {
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
-    fetch("http://localhost:4000/user",{ 
+    fetch("/user",{ 
       method: "GET",
       credentials: "include",
       headers: {

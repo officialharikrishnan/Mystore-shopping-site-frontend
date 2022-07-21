@@ -1,18 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
-import { Container, Row, Col } from 'react-grid-system'
 import image1 from '../image/profile-icon.png'
 import image2 from '../image/profile-icon-verified.png'
+import adminimg from '../image/admin.png'
+
 
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import './Header.css'
 import { useNavigate } from 'react-router-dom';
+import { AdminContext } from '../Context/Admin'
 function Header() {
   const {userDetails} = useContext(UserContext)
+  const {admin} = useContext(AdminContext)
   const navigate = useNavigate()
   function logoutHandler(){
-    fetch("http://localhost:4000/logout",{ 
+    fetch("/logout",{ 
       method: "GET",
       credentials: "include",
       headers: {
@@ -30,7 +33,31 @@ function Header() {
   
   return (
     <div className='header'>
-      <section className='sectionOne'>
+      {admin ? 
+      <div>
+        <section className='sectionOne'>
+     <a href="/adminDashboard"><h3 id='header_1'>Mystore  <br /><h6 id='header_2'>Admin</h6></h3></a>
+      </section>
+      <section className='sectionTwo'>
+
+      <Dropdown>
+         <img src={adminimg} alt=""/> 
+      <Dropdown.Toggle  id="dropdown-basic">
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu >
+        <Dropdown.Item href="/login">Login</Dropdown.Item>
+        <Dropdown.Item href="/adminDashboard/addproduct">Add product</Dropdown.Item> 
+        <Dropdown.Item href="/adminDashboard/allusers">All users</Dropdown.Item>
+       <Dropdown.Item onClick={logoutHandler}>Log out</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+      </section>
+      </div>
+       : 
+      
+      <div>
+        <section className='sectionOne'>
      <a href="/dashboard"><h3 >Mystore</h3></a>
       </section>
       <section className='sectionTwo'>
@@ -50,6 +77,12 @@ function Header() {
       </Dropdown.Menu>
     </Dropdown>
       </section>
+      </div>
+      
+      
+      
+      
+      }
 
 
 

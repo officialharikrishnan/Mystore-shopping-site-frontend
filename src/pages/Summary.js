@@ -10,7 +10,7 @@ function Summary() {
   const [count, setCount] = useState(1)
   const [totalPrice,setTotalPrice]=useState()
   useEffect(() => {
-    axios.get(`http://localhost:4000/viewoneproduct/${productId}`).then((res) => {
+    axios.get(`/viewoneproduct/${productId}`).then((res) => {
 
       setImage(res.data.product.image1[0])
       setproduct(res.data.product)

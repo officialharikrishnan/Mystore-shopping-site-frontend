@@ -9,7 +9,7 @@ function Profile() {
   const [userData,setUserData]=useState()
   const navigate = useNavigate()
   useEffect(()=>{
-    fetch("http://localhost:4000/profile",{
+    fetch("/profile",{
       method: "GET",
       credentials: "include",
       headers: {

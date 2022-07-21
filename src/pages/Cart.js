@@ -10,7 +10,7 @@ function Cart() {
   const [cartitem, setCartitem] = useState()
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(`http://localhost:4000/get-cart`, {
+    fetch(`/get-cart`, {
       method: "GET",
       credentials: "include",
       headers: {
