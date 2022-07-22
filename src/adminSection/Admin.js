@@ -16,7 +16,6 @@ function Admin() {
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
-    setAdmin(true)
     fetch(`/admin/admin`, {
       method: "GET",
       credentials: "include",
@@ -28,18 +27,23 @@ function Admin() {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        json.products.map((object) => {
-          setData((data) => [
-            ...data,
-            {
-              id: object._id,
-              Name: object.product.Name,
-              Price: object.product.Price,
-              Details: object.product.Details,
-              Image: object.product.image1
-            }
-          ]);
-        });
+        if(json.status){
+          setAdmin(true)
+          json.products.map((object) => {
+            setData((data) => [
+              ...data,
+              {
+                id: object._id,
+                Name: object.product.Name,
+                Price: object.product.Price,
+                Details: object.product.Details,
+                Image: object.product.image1
+              }
+            ]);
+          });
+        }else{
+          navigate("/adminDashboard/admin-login")
+        }
       });
   }, []);
   function handleViewproduct(id) {
@@ -74,8 +78,8 @@ function Admin() {
               <td>{element.Name}</td>
               <td>{element.Details}</td>
               <td>₹{element.Price}</td>
-              <td><button id='edit' onClick={(e) => { handleViewproduct(element.id) }}>Edit</button></td>
-              <td><button id='delete' onClick={(e) => { handleDeleteproduct(element.id) }} >Delete</button></td>
+              {/* <td><button id='edit' onClick={(e) => { handleViewproduct(element.id) }}>Edit</button></td> */}
+              {/* <td><button id='delete' onClick={(e) => { handleDeleteproduct(element.id) }} >Delete</button></td> */}
             </tr>
           </MDBTableBody>
         </Col>

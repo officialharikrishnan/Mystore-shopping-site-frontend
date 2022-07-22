@@ -1,10 +1,14 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid-system'
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import './Allusers.css'
+import { useNavigate } from 'react-router-dom';
+import { AdminContext } from '../Context/Admin';
 function Allusers() {
     const [userData, setUserData] = useState([])
+    const navigate = useNavigate()
+    const {setAdmin} = useContext(AdminContext)
     useEffect(() => {
         fetch('/admin/getallusers', {
             credentials: "include", method: "GET", headers: {
@@ -12,17 +16,22 @@ function Allusers() {
                 'Content-Type': 'application/json',
             }
         }).then((response) => response.json()).then((json) => {
-            if (json.users) {
-                json.users.map((object) => {
-                    setUserData((userData) => [
-                        ...userData, {
-                            id: object._id,
-                            name: object.name,
-                            phone: object.phone,
-                            address: object.address
-                        }
-                    ])
-                })
+            if(json.status){
+                setAdmin(true)
+                if (json.users) {
+                    json.users.map((object) => {
+                        setUserData((userData) => [
+                            ...userData, {
+                                id: object._id,
+                                name: object.name,
+                                phone: object.phone,
+                                address: object.address
+                            }
+                        ])
+                    })
+                }
+            }else{
+                navigate("/adminDashboard/admin-login")
             }
         }
         )

@@ -31,7 +31,7 @@ function Adminlogin() {
    const response = await fetch("/admin/adminlogin-submit",requestOption)
    const data = await response.json();
    console.log(data)
-   if(data.status){ 
+   if(data.adminDatas){ 
     navigate("/adminDashboard")
    }else{
     alert("Login failed")
