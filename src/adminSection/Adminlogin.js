@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Adminlogin.css'
-import image from '../image/logo.png'
+import image from '../image/adminlogo.png'
 import image1 from '../image/admin.png'
+import { AdminContext } from '../Context/Admin';
 
 
 // var FormData = require('form-data');
 function Adminlogin() {
+  const {setAdmin} = useContext(AdminContext)
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
   const navigate=useNavigate()
+  useEffect(()=>{
+    setAdmin(true)
+  },[])
  
   function handlPhoneChange(e){
     setPhone(e.target.value)

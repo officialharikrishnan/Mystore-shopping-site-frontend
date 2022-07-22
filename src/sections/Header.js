@@ -30,6 +30,22 @@ function Header() {
           }
         })
   }
+  function adminlogOut(){
+    fetch("/admin/admin-logout",{ 
+      method: "GET",
+      credentials: "include",
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }}).then((response)=>{
+          if(response.status){
+            navigate('/adminDashboard/admin-login')
+            window.location.reload()
+          }else{
+            alert("an error occurred")
+          }
+        })
+  }
   
   return (
     <div className='header'>
@@ -46,10 +62,9 @@ function Header() {
       </Dropdown.Toggle>
 
       <Dropdown.Menu >
-        <Dropdown.Item href="/login">Login</Dropdown.Item>
         <Dropdown.Item href="/adminDashboard/addproduct">Add product</Dropdown.Item> 
         <Dropdown.Item href="/adminDashboard/allusers">All users</Dropdown.Item>
-       <Dropdown.Item onClick={logoutHandler}>Log out</Dropdown.Item>
+       <Dropdown.Item onClick={adminlogOut}>Log out</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
       </section>

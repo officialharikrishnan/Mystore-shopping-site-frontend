@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
@@ -13,6 +13,7 @@ function Login () {
   const [password,setPassword]=useState()
   const navigate=useNavigate()
   const [loading,setLoading]=useState(null)
+  
  
   function handlPhoneChange(e){
     setPhone(e.target.value)
