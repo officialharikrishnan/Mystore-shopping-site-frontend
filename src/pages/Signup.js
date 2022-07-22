@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import './Signup.css'
 import image from '../image/logo.png'
 import {useNavigate} from 'react-router-dom'
+import { UserContext } from '../Context/UserContext';
 function Signup() {
+  const {setUserDetails} = useContext(UserContext)
   const [name,setName]=useState()
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
@@ -23,19 +25,24 @@ function Signup() {
     setAddress(e.target.value)
   }
   async function componentDidMount(e){
+    e.preventDefault()
     const requestOption={
       method:"POST",
       headers:{"content-type" : "application/json"},
       body:JSON.stringify({name,phone,password,address})
     };
-    const response =await fetch("/signup-submit",requestOption)
-    const data = await response.json();
-    console.log(data)
-    if(data){ 
-     navigate("/dashboard")
-    }else{
-     alert("Login failed")
-    }
+     fetch("/signup-submit", requestOption).then((response)=> response.json()).then((json)=>{
+      console.log(json);
+      if(json.status){ 
+        setUserDetails(json.userData)
+       navigate("/dashboard")
+      }else{
+       alert("Login failed")
+      }
+    })
+    // const response =await fetch("/signup-submit",requestOption)
+    // const data =  response.json();
+    // console.log(response.userData)
   }
   return (
     <div className='signup-page'>

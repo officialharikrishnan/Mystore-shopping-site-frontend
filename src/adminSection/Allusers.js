@@ -8,7 +8,7 @@ import { AdminContext } from '../Context/Admin';
 function Allusers() {
     const [userData, setUserData] = useState([])
     const navigate = useNavigate()
-    const {setAdmin} = useContext(AdminContext)
+    const { setAdmin } = useContext(AdminContext)
     useEffect(() => {
         fetch('/admin/getallusers', {
             credentials: "include", method: "GET", headers: {
@@ -16,7 +16,7 @@ function Allusers() {
                 'Content-Type': 'application/json',
             }
         }).then((response) => response.json()).then((json) => {
-            if(json.status){
+            if (json.status) {
                 setAdmin(true)
                 if (json.users) {
                     json.users.map((object) => {
@@ -30,7 +30,7 @@ function Allusers() {
                         ])
                     })
                 }
-            }else{
+            } else {
                 navigate("/adminDashboard/admin-login")
             }
         }
