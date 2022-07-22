@@ -1,6 +1,4 @@
 
-
-
 #logo{
     width: 80%;
   }
@@ -10,7 +8,7 @@
     color: #746755;
     
   }
-  p{
+  #signup{
     color: white;
     font-weight: 900;
     padding-top: 5%;
@@ -41,4 +39,13 @@
   }
   #already-account{
     color: #8f8373;
+  }
+  .user-exist{
+    border:1px solid red;
+  }
+  #warning{
+    font-weight: 100;
+    font-size: smaller;
+    /* padding-top: 1px; */
+    margin-top: 1px;
   }

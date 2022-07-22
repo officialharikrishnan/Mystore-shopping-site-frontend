@@ -11,6 +11,7 @@ function Signup() {
   const [password,setPassword]=useState()
   const [address,setAddress]=useState()
   const navigate = useNavigate()
+  const [userCheck,setUserCheck]=useState()
 
   function handleNameChange(e){
     setName(e.target.value)
@@ -37,7 +38,12 @@ function Signup() {
         setUserDetails(json.userData)
        navigate("/dashboard")
       }else{
-       alert("Login failed")
+        if(json.userCheck){
+          setUserCheck(true)
+          alert("This phone number already used")
+        }else{
+          alert("Login failed")
+        }
       }
     })
     // const response =await fetch("/signup-submit",requestOption)
@@ -55,10 +61,10 @@ function Signup() {
           <Col md={6}>
 
             <div id="signup-form" >
-              <p>Signup</p>
+              <p id='signup'>Signup</p>
               <form action="" onSubmit={componentDidMount}>
                 <input onChange={handleNameChange} name="name" type="text" placeholder='Name'/>
-                <input onChange={handlePhoneChange} name="phone" type="text" placeholder='Phone' />
+                <input onChange={handlePhoneChange} name="phone" className={userCheck ? "user-exist" : ""} type="text" placeholder='Phone' />
                 <input onChange={handlePasswordChange} name="password" type="password" placeholder='Password' />
                 <input onChange={handleAddressChange} name="address" type="text" placeholder='Address' />
                 <a id='already-account' href="/login">I already have an account</a>
