@@ -1,7 +1,7 @@
 .header {
     width: 100%;
     height: 10%;
-    background-color: #867862;
+    background-color: #6d63ff;
     color: #ffff;
 }
 #header_1{
@@ -25,10 +25,13 @@
 
 #dropdown-basic {
     border-style: none;
+    background-color: #6d63ff;
+    
 }
 
 #dropdown-basic:hover {
-    background-color: #655a4a;
+    background-color: #493cfb;
+
 }
 
 a,

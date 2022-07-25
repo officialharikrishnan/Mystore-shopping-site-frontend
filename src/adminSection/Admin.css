@@ -5,7 +5,7 @@
     margin-right: 17%;
 }
 .btn{
-    background-color: #867762;
+    background-color: #6d63ff;
     color: white;
 }
 #image{
@@ -19,14 +19,14 @@
 .card h4{
     color: #867762;
 }
-#image{
+#product-image{
     width: 20%;
     height: 20%;
 }
 #edit{
     margin-top: 50px;
     /* margin-left: 200px; */
-    background-color: #867762;
+    background-color: #6d63ff;
     color: white;
     border-radius: 5px;
 }

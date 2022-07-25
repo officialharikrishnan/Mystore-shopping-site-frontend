@@ -4,7 +4,7 @@
 #btnbuy{
     margin-top: 10%;
     margin-left: 5%;
-    background-color: rgb(194, 98, 43);
+    background-color: rgb(28, 152, 0);
     color: white;
     border-radius: 6px;
     padding: 2%;
@@ -12,7 +12,7 @@
 }
 #btncart{
     margin-left: 10%;
-    background-color: rgb(172, 63, 0);
+    background-color: rgb(255, 157, 19);
     color: white;
     border-radius: 6px;
     padding: 2%;
@@ -20,12 +20,12 @@
 }
 #btnbuy:hover{
     cursor: pointer;
-    background-color: rgb(16, 109, 4);
+    background-color: rgb(15, 125, 0);
 
 }
 #btncart:hover{
     cursor: pointer;
-    background-color: rgb(16, 109, 4);
+    background-color: rgb(255, 140, 0);
 
 }
 .details{

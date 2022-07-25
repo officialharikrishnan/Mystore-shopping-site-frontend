@@ -1,0 +1,53 @@
+
+#loading{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+  }
+  
+  #logo{
+    width: 80%;
+  }
+  #logoname{
+    margin-top: 20%;
+    font-weight: 700;
+    color: #746755;
+    
+  }
+  p{
+    color: white;
+    font-weight: 900;
+    font-size: larger;
+  }
+  #login-form-icon{
+    margin-top: 20px;
+  }
+  #login-form{
+    background-color: rgb(188, 197, 197);
+    width: 100%;
+    height: 90%;
+    box-shadow: -5px -5px 25px rgb(128, 120, 120), 5px 5px 25px black;
+    margin-top: 10%;
+  
+  }
+  input{
+    margin: 10%;
+    width: 80%;
+    padding: 1.5%;
+    
+  }
+  #btn{
+    background-color: #6d63ff;
+    color: white;
+    width: 80%;
+    margin-left: 10%;
+    
+    margin-bottom: 20%;
+  }
+  #forgot{
+    color: #8f8373;
+    margin-right: 3ex;
+  }
+  #create-acc{
+    color: #8f8373;
+  }

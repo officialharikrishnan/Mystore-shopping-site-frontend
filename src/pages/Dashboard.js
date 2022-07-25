@@ -57,7 +57,9 @@ function Dashboard() {
 
         <Col md={12}>
           <div className="card" key={element._id} onClick={(e) => { handleViewproduct(element.id) }}>
+            <div className="card-image">
             <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
+            </div>
             <h2>{element.Name}</h2>
             <h4>₹{element.Price}</h4>
 

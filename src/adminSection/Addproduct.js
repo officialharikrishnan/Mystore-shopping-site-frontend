@@ -55,6 +55,7 @@ function Addproduct() {
         console.log("success");
         setColor("btn btn-success")
         setBtnStatus("red")
+        window.location.reload()
       }else{
         console.log(errorStatus);
         alert(errorStatus)

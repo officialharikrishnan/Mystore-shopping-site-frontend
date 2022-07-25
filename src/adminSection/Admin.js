@@ -74,7 +74,7 @@ function Admin() {
           <MDBTableBody>
             <tr>
 
-              <td><img id='image' src={`/uploads/${element.Image[0]}`} alt="" /></td>
+              <td><img id='product-image' src={`/uploads/${element.Image[0]}`} alt="" /></td>
               <td>{element.Name}</td>
               <td>{element.Details}</td>
               <td>₹{element.Price}</td>
