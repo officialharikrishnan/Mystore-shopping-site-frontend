@@ -9,6 +9,7 @@ function Cart() {
   const { setUserDetails } = useContext(UserContext)
   const [cartitem, setCartitem] = useState()
   const navigate = useNavigate()
+  let datas=[1,2,3]
   useEffect(() => {
     fetch(`/get-cart`, {
       method: "GET",
@@ -24,60 +25,56 @@ function Cart() {
           if (json.cartItems) {
             setUserDetails(json.sessionData)
             json.products.map((object) => {
-              setData((data) => [
-                ...data,
-                {
-                  id: object._id,
-                  Name: object.product.Name,
-                  Price: object.product.Price,
-                  Details: object.product.Details,
-                  Image: object.product.image1
-                }
-              ])
+               return setData((data) => [
+                  ...data,
+                  {
+                    product:object.products
+                  }
+                ])
+
             })
           } else {
             setCartitem(true)
             setUserDetails(json.sessionData)
           }
         } else {
-          navigate('/login')
+          navigate('/login') 
         }
-      }
+      } 
 
       )
-  }, [])
-  console.log(data);
+    }, []) 
+    console.log(data);
 
-  const tableRows = data?.map(
-    (element) =>
-    (
-      <div className='cards' >
-        <Col md={5}>
-          <div className="d-flex justify-content-start">
-            <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
+    // tablerow map
 
-          </div>
-        </Col>
-        <Col md={7}>
-          <div className="content">
-            <h2 >{element.Name}</h2>
-            <h5 >₹{element.Price}</h5>
-
-          </div>
-        </Col>
-
-
-      </div>
+    const tableRows = data.map(
+      (element,index) =>
+      (
+        <div >
+  
+          <Col md={12}>
+            <div className="card" key={index} >
+              <div className="card-image">
+              <img id='image' src={`/uploads/${element.product[0].product.image1[0]}`} alt="" />
+              </div>
+              <h2>{element.product[0].product.Name}</h2>
+              <h4>₹{element.product[0].product.Price}</h4>
+  
+            </div>
+          </Col>
+  
+        </div>
+      )
+  
     )
-
-  )
   return (
     <div>{cartitem ? <div className='empty-cart'><h5>No products</h5></div> :
       <Container>
         <Row  >
           <div className="cart">
 
-          {tableRows}
+          {tableRows ? tableRows : "no data"}
           </div>
 
 
