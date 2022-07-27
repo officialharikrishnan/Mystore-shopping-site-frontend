@@ -4,7 +4,6 @@ import './App.css';
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Header from './sections/Header';
-import Footer from './sections/Footer';
 import Signup from './pages/Signup'
 import Addproduct from './adminSection/Addproduct';
 import Viewproduct from './pages/Viewproduct';
@@ -42,7 +41,6 @@ function App() {
 
         </Routes>
       </Router>
-      <Footer/>
     </div>
   );
 }

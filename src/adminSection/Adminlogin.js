@@ -2,7 +2,7 @@ import React, { useState,useEffect,useContext } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Adminlogin.css'
-import image from '../image/adminlogo.png'
+import image from '../image/admin-logo.png'
 import image1 from '../image/admin.png'
 import { AdminContext } from '../Context/Admin';
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import {useNavigate} from 'react-router-dom'
 import './Login.css'
-import image from '../image/logo.png'
+import image from '../image/login.png'
 import image1 from '../image/login-icon.png'
 
 import Loading from './Loading';

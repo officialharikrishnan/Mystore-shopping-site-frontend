@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-grid-system'
-import { MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import './Cart.css'
+import image from '../image/empty-cart.svg'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../Context/UserContext';
 function Cart() {
@@ -9,7 +10,7 @@ function Cart() {
   const { setUserDetails } = useContext(UserContext)
   const [cartitem, setCartitem] = useState()
   const navigate = useNavigate()
-  let datas=[1,2,3]
+  let datas = [1, 2, 3]
   useEffect(() => {
     fetch(`/get-cart`, {
       method: "GET",
@@ -25,12 +26,13 @@ function Cart() {
           if (json.cartItems) {
             setUserDetails(json.sessionData)
             json.products.map((object) => {
-               return setData((data) => [
-                  ...data,
-                  {
-                    product:object.products
-                  }
-                ])
+              return setData((data) => [
+                ...data,
+                {
+                  product: object.products,
+                  quantity: object.quantity
+                }
+              ])
 
             })
           } else {
@@ -38,51 +40,59 @@ function Cart() {
             setUserDetails(json.sessionData)
           }
         } else {
-          navigate('/login') 
+          navigate('/login')
         }
-      } 
+      }
 
       )
-    }, []) 
-    console.log(data);
+  }, [])
+  function handleViewproduct(id) {
+    console.log(id);
+  
+  }
 
-    // tablerow map
+  // tablerow map
 
-    const tableRows = data.map(
-      (element,index) =>
-      (
-        <div >
-  
-          <Col md={12}>
-            <div className="card" key={index} >
-              <div className="card-image">
-              <img id='image' src={`/uploads/${element.product[0].product.image1[0]}`} alt="" />
-              </div>
-              <h2>{element.product[0].product.Name}</h2>
-              <h4>₹{element.product[0].product.Price}</h4>
-  
-            </div>
-          </Col>
-  
-        </div>
-      )
-  
-    )
-  return (
-    <div>{cartitem ? <div className='empty-cart'><h5>No products</h5></div> :
-      <Container>
-        <Row  >
-          <div className="cart">
+  const tableRows = data.map(
+    (element, index) =>
+    (
+      <div >
 
-          {tableRows ? tableRows : "no data"}
+
+          <div className="card" onClick={(e) => { handleViewproduct(element.product[0]._id) }}>
+        <Col md={6}>
+            <img id='image' src={`/uploads/${element.product[0].product.image1[0]}`} alt="" />
+        </Col>
+        <Col md={6}>
+        </Col>
+            <h3>{element.product[0].product.Name}</h3>
+            <h4>₹{element.product[0].product.Price}</h4>
+            <h6>Qty. {element.quantity}</h6>
+
           </div>
 
+      </div>
+    )
 
-        </Row>
+  )
+  console.log(data);
+  return (
+    <div>{cartitem ? <div className='empty-cart'><img src={image} alt="" /> <br /><h6>No products</h6></div> :
 
-      </Container>
+
+    <Container>
+    <Row  >
+      <div className="cart">
+
+    
+      {tableRows}
+      </div>
+    </Row>
+
+  </Container>
     }
     </div>
+
   )
 }
 

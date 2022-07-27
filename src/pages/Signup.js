@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Container, Row, Col } from 'react-grid';
 import './Signup.css'
-import image from '../image/logo.png'
+import image from '../image/signup.png'
 import {useNavigate} from 'react-router-dom'
 import { UserContext } from '../Context/UserContext';
 function Signup() {
@@ -48,7 +48,7 @@ function Signup() {
     })
     // const response =await fetch("/signup-submit",requestOption)
     // const data =  response.json();
-    // console.log(response.userData)
+    console.log(requestOption)
   }
   return (
     <div className='signup-page'>
