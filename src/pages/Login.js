@@ -58,8 +58,8 @@ function Login () {
                 <img id='login-form-icon' src={image1} alt="" />
                 <p>Login</p>
                 <form onSubmit={componentDidMount} >
-                  <input onChange={handlPhoneChange}  type="text" name='phone' id='phone' placeholder='Phone' />
-                  <input onChange={handlePasswordChange} type="password" name='password' id='password'  placeholder='Password' />
+                  <input onChange={handlPhoneChange}  type="text" name='phone' id='phone' placeholder='Phone' required/>
+                  <input onChange={handlePasswordChange} type="password" name='password' id='password'  placeholder='Password' required />
                   <a id='forgot' href="/">Forgot password</a>  
                   <a id ="create-acc"href="/signup">Create an account</a> 
                   <button id='btn' value="Submit" type="submit">Go!</button>

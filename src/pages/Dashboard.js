@@ -4,25 +4,27 @@ import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Context/Context';
 import { UserContext } from '../Context/UserContext';
 import './Dashboard.css'
-
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 function Dashboard() {
 
   const { setProductId } = useContext(ProductContext)
-  const {setUserDetails} = useContext(UserContext)
+  const { setUserDetails } = useContext(UserContext)
   const [data, setData] = useState([]);
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
-    fetch("/user",{ 
+    fetch("/user", {
       method: "GET",
       credentials: "include",
       headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }})
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
       .then((response) => response.json())
       .then((json) => {
-        if(json.status){
+        if (json.status) {
 
           setUserDetails(json.userDatas);
           json.products.map((object) => {
@@ -36,8 +38,8 @@ function Dashboard() {
                 Image: object.product.image1
               }
             ]);
-          }); 
-        }else{
+          });
+        } else {
           navigate('/login')
         }
       });
@@ -49,7 +51,6 @@ function Dashboard() {
     // navigate('/viewproduct')
     setViewproduct(true)
   }
-
   const tableRows = data.map(
     (element) =>
     (
@@ -58,10 +59,10 @@ function Dashboard() {
         <Col md={12}>
           <div className="card" key={element._id} onClick={(e) => { handleViewproduct(element.id) }}>
             <div className="card-image">
-            <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
+              <img id='image' src={`/uploads/${element.Image[0]}`} alt="" />
             </div>
-            <h2>{element.Name}</h2>
-            <h4>₹{element.Price}</h4>
+            <h5>{element.Name}</h5>
+            <h6>₹{element.Price}</h6>
 
           </div>
         </Col>
@@ -73,9 +74,9 @@ function Dashboard() {
 
   return (
     <div className='page' >
+
       <Container>
         <Row  >
-        
           {tableRows}
         </Row>
 

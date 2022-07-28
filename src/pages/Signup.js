@@ -6,15 +6,19 @@ import {useNavigate} from 'react-router-dom'
 import { UserContext } from '../Context/UserContext';
 function Signup() {
   const {setUserDetails} = useContext(UserContext)
-  const [name,setName]=useState()
+  const [firstname,setFirstName]=useState()
+  const [lastname,setLastName]=useState()
   const [phone,setPhone]=useState()
   const [password,setPassword]=useState()
   const [address,setAddress]=useState()
   const navigate = useNavigate()
   const [userCheck,setUserCheck]=useState()
 
-  function handleNameChange(e){
-    setName(e.target.value)
+  function handleFirstNameChange(e){
+    setFirstName(e.target.value)
+  }
+  function handleLastNameChange(e){
+    setLastName(e.target.value)
   }
   function handlePhoneChange(e){
     setPhone(e.target.value)
@@ -30,7 +34,7 @@ function Signup() {
     const requestOption={
       method:"POST",
       headers:{"content-type" : "application/json"},
-      body:JSON.stringify({name,phone,password,address})
+      body:JSON.stringify({firstname,lastname,phone,password,address})
     };
      fetch("/signup-submit", requestOption).then((response)=> response.json()).then((json)=>{
       console.log(json);
@@ -63,9 +67,10 @@ function Signup() {
             <div id="signup-form" >
               <p id='signup'>Signup</p>
               <form action="" onSubmit={componentDidMount}>
-                <input onChange={handleNameChange} name="name" type="text" placeholder='Name'/>
-                <input onChange={handlePhoneChange} name="phone" className={userCheck ? "user-exist" : ""} type="text" placeholder='Phone' />
-                <input onChange={handlePasswordChange} name="password" type="password" placeholder='Password' />
+                <input onChange={handleFirstNameChange} name="name" type="text" placeholder='First Name' required/>
+                <input onChange={handleLastNameChange} name="name" type="text" placeholder='Last Name' required/>
+                <input onChange={handlePhoneChange} name="phone" className={userCheck ? "user-exist" : ""} type="text" placeholder='Phone' required/>
+                <input onChange={handlePasswordChange} name="password" type="password" placeholder='Password' required />
                 <input onChange={handleAddressChange} name="address" type="text" placeholder='Address' />
                 <a id='already-account' href="/login">I already have an account</a>
                 <button id='btn' type="submit">Signup</button>

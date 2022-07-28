@@ -8,11 +8,11 @@
     background-color: #6d63ff;
     color: white;
 }
-#image{
+#product-image{
     max-width: 16rem;
      margin: 15px;
 }
-.card{
+.product-card{
     width: 90%;
     height: 10%;
 }

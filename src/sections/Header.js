@@ -80,7 +80,7 @@ function Header() {
       <Dropdown>
         {userDetails ? <img src={image2} alt=""/> : <img src={image1} alt="" />}
       <Dropdown.Toggle  id="dropdown-basic">
-        {userDetails && userDetails.name}
+        {userDetails && userDetails.firstname}
       </Dropdown.Toggle>
 
       <Dropdown.Menu >
