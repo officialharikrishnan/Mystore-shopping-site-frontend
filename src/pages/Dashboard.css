@@ -1,19 +1,27 @@
 .page{
-    margin-left: 10%;
     margin-top: 5%;
+    margin-left: 10%;
+
 }
 .btn{
     background-color: #6d63ff;
     color: white;
 }
-#image{
+/* #image{
     max-width: 16rem;
     margin: 20px;
-}
+} */
 .card{
-    width: 90%;
+    width: 270px;
     height: 10%;
+    margin-top: 20px;
 }
 .card h4{
     color: #867762;
 }
+.sliderimg{
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: fill;
+  }

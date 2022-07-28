@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../Context/Context';
 import { UserContext } from '../Context/UserContext';
 import './Dashboard.css'
-import AwesomeSlider from 'react-awesome-slider';
+import AliceCarousel from 'react-alice-carousel';
+import "react-alice-carousel/lib/alice-carousel.css";
 import 'react-awesome-slider/dist/styles.css';
+import image from '../image/mobile-offers.jpeg'
 function Dashboard() {
 
   const { setProductId } = useContext(ProductContext)
@@ -73,14 +75,27 @@ function Dashboard() {
   )
 
   return (
-    <div className='page' >
+    <div className='main-page' >
+      <Row>
+        <Col md={12}>
+        <AliceCarousel autoPlay autoPlayInterval="3000" disableButtonsControls={true}>
+      <img src={image} className="sliderimg"/>
+      <img src={image} className="sliderimg"/>
+      <img src={image} className="sliderimg"/>
+      <img src={image} className="sliderimg"/>
+      </AliceCarousel>
+        </Col>
+      </Row>
+      <div className="page">
 
       <Container>
         <Row  >
+          
           {tableRows}
         </Row>
 
       </Container>
+      </div>
     </div>
   )
 
