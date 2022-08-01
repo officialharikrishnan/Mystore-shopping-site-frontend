@@ -78,7 +78,7 @@ function Admin() {
               <td>{element.Name}</td>
               <td>{element.Details}</td>
               <td>₹{element.Price}</td>
-              {/* <td><button id='edit' onClick={(e) => { handleViewproduct(element.id) }}>Edit</button></td> */}
+              <td><button id='edit' onClick={(e) => { handleViewproduct(element.id) }}>Edit</button></td>
               {/* <td><button id='delete' onClick={(e) => { handleDeleteproduct(element.id) }} >Delete</button></td> */}
             </tr>
           </MDBTableBody>

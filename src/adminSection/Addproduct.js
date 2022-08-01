@@ -38,7 +38,7 @@ function Addproduct() {
       setImage1(files1)
       setImage2(files2)
     }
-    function componentDidMount(e) {
+    const componentDidMount =async (e) => {
     e.preventDefault()
     const data=new FormData();
     data.append("Name",productName);
@@ -47,7 +47,13 @@ function Addproduct() {
     data.append("image1",image1)
     data.append("image1",image2)
 
-    
+    console.log(image1);
+    // try {
+    //   const res = await axios.post('/admin/addproduct', {data:data})
+
+    // } catch (err) {
+    //   console.log(err);
+    // }
     axios.post('/admin/addproduct',data).then(res=>{
       console.log(res.data.status);
       setErrorStatus(res.data.status)
@@ -77,7 +83,7 @@ function Addproduct() {
                 <input onChange={handleProductName} type="text" placeholder='Product name' />
                 <input onChange={handleProductDetails} type="text" placeholder='discription' />
                 <input onChange={handleProductPrice} type="number" placeholder='price' /> <br />
-                <input type="file" name='Image' multiple accept='.jpg' onChange={e=>handleProductImage(e)}/>
+                <input type="file" name='image1' multiple accept='.jpg' onChange={e=>handleProductImage(e)}/>
                 {/* <button type="submit" className={color} >Submit{btnStatus}</button> */}
                 {color ? <button id='btnn' type='submit' className={color}>submitted</button> : <button id='btnnn' type='submit'>Submit</button>
                 }
