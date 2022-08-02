@@ -15,7 +15,6 @@ function Updateproduct() {
   const [productPrice, setProductPrice] = useState()
   const [image1, setImage1] = useState()
   const [image2, setImage2] = useState()
-  const [btnStatus, setBtnStatus] = useState()
   const [color, setColor] = useState()
   const [errorStatus, setErrorStatus] = useState()
   useEffect(()=>{
@@ -25,7 +24,12 @@ function Updateproduct() {
       'Content-Type': 'application/json',
     }}).then((response)=>
       response.json()
-    ).then((json)=> setoldimgId(json.product.image1))
+    ).then((json)=> {
+      setoldimgId(json.product.image1)
+      setProductName(json.product.Name)
+      setProductPrice(json.product.Price)
+      setProductDetails(json.product.Details)
+    })
   },[])
 
 
@@ -47,7 +51,7 @@ function Updateproduct() {
     setImage1(files1)
     setImage2(files2)
   }
-  console.log(image1);
+  console.log(oldimgId);
   const componentDidMount = async (e) => {
     e.preventDefault()
     const data = new FormData();
@@ -63,11 +67,9 @@ function Updateproduct() {
     axios.post('/admin/editproduct',data).then(res=>{
       console.log(res.data.status);
       setErrorStatus(res.data.status)
-      if(res.data.status==="true"){
-        console.log("success");
+      if(res.data.status===true){
         setColor("btn btn-success")
-        setBtnStatus("red")
-        window.location.reload()
+        Navigate("/adminDashboard")
       }else{
         console.log(errorStatus);
         alert(errorStatus)
@@ -87,9 +89,9 @@ function Updateproduct() {
             <div className="productform">
               <h4>Update Product</h4>
               <form onSubmit={componentDidMount}>
-                <input onChange={handleProductName} type="text" placeholder='Product name' />
-                <input onChange={handleProductDetails} type="text" placeholder='discription' />
-                <input onChange={handleProductPrice} type="number" placeholder='price' /> <br />
+                <input onChange={handleProductName} type="text" value={productName} placeholder='Product name' />
+                <input onChange={handleProductDetails} type="text" value={productDetails} placeholder='discription' />
+                <input onChange={handleProductPrice} type="number" value={productPrice} placeholder='price' /> <br />
                 <input type="file" name='Image' multiple accept='.jpg' onChange={e=>handleProductImage(e)}/>
                 {/* <button type="submit" className={color} >Submit{btnStatus}</button> */}
                 {color ? <button id='btnn' type='submit' className={color}>submitted</button> : <button id='btnnn' type='submit'>Submit</button>
