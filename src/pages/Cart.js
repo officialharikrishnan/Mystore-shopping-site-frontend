@@ -52,7 +52,7 @@ function Cart() {
   }
 
   // tablerow map
-
+  console.log(data);
   const tableRows = data.map(
     (element, index) =>
     (

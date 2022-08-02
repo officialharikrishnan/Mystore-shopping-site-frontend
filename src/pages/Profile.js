@@ -8,7 +8,8 @@ function Profile() {
   const {setUserDetails} = useContext(UserContext)
   const [userData,setUserData]=useState()
   const [editStatus,setEditStatus]=useState(false)
-  const [name,setName]=useState()
+  const [firstname,setFirstName]=useState()
+  const [lastname,setLastName]=useState()
   const [phone,setPhone]=useState()
   const [address,setAddress]=useState()
   const navigate = useNavigate()
@@ -43,7 +44,7 @@ function Profile() {
     const requestOption={
       method:"POST",
       headers:{"content-type" : "application/json"},
-      body:JSON.stringify({name,phone,address})
+      body:JSON.stringify({firstname,lastname,phone,address})
     };
     console.log(requestOption);
     fetch('profile-edit',requestOption).then((res)=>{
@@ -54,8 +55,12 @@ function Profile() {
       }
     })
   }
-  const nameHandler = (e) =>{
-      setName(e.target.value)
+  const firstnameHandler = (e) =>{
+      setFirstName(e.target.value)
+
+  }
+  const lastnameHandler = (e) =>{
+    setLastName(e.target.value)
 
   }
   const phoneHandler = (e) =>{
@@ -74,10 +79,13 @@ function Profile() {
               <img id='address-image' src={image} alt="" />
           </Col>
           <Col md={6}>
+            {editStatus ? <h5 className='heading'>Edit Personal Informations</h5> : <h5 className='heading'>Personal Informations</h5>}
               {editStatus ? 
                 <div className="address-card-edit">
-              <h5>Name : <input type="text" name='name' onChange={nameHandler} placeholder={userData.name} /></h5>
+              <h5>First Name : <input type="text" name='firstname' onChange={firstnameHandler} placeholder={userData.firstname} /></h5>
               <hr />
+              <h5>Last Name : <input type="text" name='lastname' onChange={lastnameHandler} placeholder={userData.lastname} /></h5>
+              <br />
               <h5>Phone : <input type="number" name='phone' onChange={phoneHandler} placeholder={userData.phone} /></h5>
               <hr />
               <h5>Address : <input type="text" name='address' onChange={addressHandler} placeholder={userData.address} /></h5>
@@ -87,7 +95,9 @@ function Profile() {
             {userData &&
             
               <div className="address-card">
-                <h5>Name : {userData.name}</h5>
+                <h5>First Name : {userData.firstname}</h5>
+                <hr />
+                <h5>Last Name : {userData.lastname}</h5>
                 <hr />
                 <h5>Phone : {userData.phone}</h5>
                 <hr />

@@ -43,7 +43,7 @@
     background-color: #6d63ff;
     color: white;
     border: none;
-    height: 50px;
+    height: 65px;
     font-weight: 700;
     font-size: large;
 }
@@ -53,7 +53,7 @@
     background-color: #6d63ff;
     color: white;
     border: none;
-    height: 50px;
+    height: 65px;
     font-weight: 700;
     font-size: large;
 }
@@ -65,4 +65,8 @@
 }
 .save-btn:hover{
     background-color: green;
+}
+.heading{
+    padding-top: 15px;
+    color: rgb(103, 103, 103);
 }
