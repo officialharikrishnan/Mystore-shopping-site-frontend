@@ -13,6 +13,11 @@ function Admin() {
   const { setProductId } = useContext(ProductContext)
   const { setAdmin } = useContext(AdminContext)
   const [data, setData] = useState([]);
+  const [sliderimg1, setSliderimg1] = useState()
+  const [sliderimg2, setSliderimg2] = useState()
+  const [sliderimg3, setSliderimg3] = useState()
+  const [sliderimg4, setSliderimg4] = useState()
+
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
@@ -27,7 +32,7 @@ function Admin() {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        if(json.status){
+        if (json.status) {
           setAdmin(true)
           json.products.map((object) => {
             setData((data) => [
@@ -41,7 +46,7 @@ function Admin() {
               }
             ]);
           });
-        }else{
+        } else {
           navigate("/adminDashboard/admin-login")
         }
       });
@@ -62,6 +67,32 @@ function Admin() {
         alert("somthing wrong")
       }
     })
+  }
+  function imagehandler(e) {
+
+      setSliderimg1(e.target.files[0]);
+      setSliderimg2(e.target.files[1]);
+      setSliderimg3(e.target.files[2]);
+      setSliderimg4(e.target.files[3]);
+
+
+  }
+  const sliderimgUploadhandler =async (e) => {
+    e.preventDefault()
+    const formData= new FormData()
+    formData.append("image1",sliderimg1)
+    // formData.append("image1",sliderimg2)
+    // formdata.append("imagethree",sliderimg3)
+    // formdata.append("imagefour",sliderimg4)
+    // console.log(formdata.get("imageone"));
+    fetch("admin/sliderimage", {
+        method: 'POST',
+        body: formData,
+       
+    })
+        .then((res) => console.log(res))
+        .catch((err) => ("Error occured", err));
+
   }
 
   const tableRows = data.map(
@@ -88,16 +119,45 @@ function Admin() {
     )
 
   )
-
   return (
     <div className='page' >
       <div id="heading"> <h2>All products</h2></div>
 
       <Container>
         <Row  >
-          <MDBTable>
-            {tableRows}
-          </MDBTable>
+          <Col md={8}>
+            <div className="product-section">
+              <MDBTable>
+                {tableRows}
+              </MDBTable>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div className="slider-editer">
+              <form onSubmit={sliderimgUploadhandler}>
+                
+              <div className="file-input">
+                <input type="file" name='image1' multiple onChange={e => imagehandler(e)} />
+                <span className="button">Choose</span>
+                <span className="label" data-js-label>Select files </span>
+                </div>
+              {sliderimg1 && <button type='submit' id='slider-upload' >Upload</button>}
+
+              </form>
+              <br />
+              <div className="img1">
+
+              <img src={sliderimg1 && URL.createObjectURL(sliderimg1)} alt="" />
+              <br />
+              <img src={sliderimg2 && URL.createObjectURL(sliderimg2)} alt="" />
+              <br />
+              <img src={sliderimg3 && URL.createObjectURL(sliderimg3)} alt="" />
+              <br />
+              <img src={sliderimg4 && URL.createObjectURL(sliderimg4)} alt="" />
+              </div>
+            </div>
+          </Col>
+
 
         </Row>
 

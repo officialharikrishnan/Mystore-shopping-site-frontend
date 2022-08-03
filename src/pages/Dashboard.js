@@ -86,7 +86,7 @@ function Dashboard() {
       </AliceCarousel>
         </Col>
       </Row>
-      <div className="page">
+      <div className="product-page">
 
       <Container>
         <Row  >

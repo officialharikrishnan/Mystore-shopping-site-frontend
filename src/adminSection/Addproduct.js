@@ -48,12 +48,7 @@ function Addproduct() {
     data.append("image1",image2)
 
     console.log(image1);
-    // try {
-    //   const res = await axios.post('/admin/addproduct', {data:data})
-
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    
     axios.post('/admin/addproduct',data).then(res=>{
       console.log(res.data.status);
       setErrorStatus(res.data.status)
