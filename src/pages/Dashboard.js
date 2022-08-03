@@ -13,9 +13,28 @@ function Dashboard() {
   const { setProductId } = useContext(ProductContext)
   const { setUserDetails } = useContext(UserContext)
   const [data, setData] = useState([]);
+  const [slider, setSlider] = useState([])
   const [viewproduct, setViewproduct] = useState(false)
   const navigate = useNavigate()
   useEffect(() => {
+    fetch("/get-sliderimage", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((res) => res.json()).then((json) => {
+      console.log(json);
+      json.data.map((obj) => {
+        setSlider((slider) => [
+          ...slider,
+          {
+            id: obj
+          }
+        ])
+      })
+    })
     fetch("/user", {
       method: "GET",
       credentials: "include",
@@ -53,6 +72,9 @@ function Dashboard() {
     // navigate('/viewproduct')
     setViewproduct(true)
   }
+  console.log(slider);
+
+
   const tableRows = data.map(
     (element) =>
     (
@@ -78,23 +100,25 @@ function Dashboard() {
     <div className='main-page' >
       <Row>
         <Col md={12}>
-        <AliceCarousel autoPlay autoPlayInterval="3000" disableButtonsControls={true}>
-      <img src={image} className="sliderimg"/>
-      <img src={image} className="sliderimg"/>
-      <img src={image} className="sliderimg"/>
-      <img src={image} className="sliderimg"/>
-      </AliceCarousel>
+          {slider &&
+            <AliceCarousel autoPlay autoPlayInterval="3000" disableButtonsControls={true} infinite={true}>
+              {slider[0] && <img src={`/uploads/${slider[0].id}`} className="sliderimg" />}
+              {slider[1] && <img src={`/uploads/${slider[1].id}`} className="sliderimg" />}
+              {slider[2] ? <img src={`/uploads/${slider[2].id}`} className="sliderimg" /> : ""}
+              {slider[3] && <img src={`/uploads/${slider[3].id}`} className="sliderimg" />}
+            </AliceCarousel>
+          }
         </Col>
       </Row>
       <div className="product-page">
 
-      <Container>
-        <Row  >
-          
-          {tableRows}
-        </Row>
+        <Container>
+          <Row  >
 
-      </Container>
+            {tableRows}
+          </Row>
+
+        </Container>
       </div>
     </div>
   )
