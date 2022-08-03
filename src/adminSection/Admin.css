@@ -103,17 +103,27 @@
     width: 100px;
     height: auto;
   }
-  #slider-upload{
+  .slider-upload{
     border: none;
     background: dodgerblue;
     border-radius: 5px;
     color: white;
     width: 100px;
     height: 40px;
-    margin-top: 10px;
+    margin-top: 50px;
 
   }
-  #slider-upload:hover{
+  .slider-upload:hover{
     cursor: pointer;
     background-color: rgb(0, 88, 177);
   }
+  .slider-upload-success{
+    border: none;
+    background-color: rgb(3, 192, 3);
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    height: 40px;
+    margin-top: 50px;
+  }
+  

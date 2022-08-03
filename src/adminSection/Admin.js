@@ -13,6 +13,7 @@ function Admin() {
   const { setProductId } = useContext(ProductContext)
   const { setAdmin } = useContext(AdminContext)
   const [data, setData] = useState([]);
+  const [submitStatus,setSubmitStatus]=useState(false)
   const [sliderimg1, setSliderimg1] = useState()
   const [sliderimg2, setSliderimg2] = useState()
   const [sliderimg3, setSliderimg3] = useState()
@@ -81,16 +82,20 @@ function Admin() {
     e.preventDefault()
     const formData= new FormData()
     formData.append("image1",sliderimg1)
-    // formData.append("image1",sliderimg2)
-    // formdata.append("imagethree",sliderimg3)
-    // formdata.append("imagefour",sliderimg4)
+    formData.append("image1",sliderimg2)
+    formData.append("image1",sliderimg3)
+    formData.append("image1",sliderimg4)
     // console.log(formdata.get("imageone"));
     fetch("admin/sliderimage", {
         method: 'POST',
         body: formData,
        
     })
-        .then((res) => console.log(res))
+        .then((res) => {
+        if(res.status){
+          setSubmitStatus(true)
+        }
+        })
         .catch((err) => ("Error occured", err));
 
   }
@@ -141,7 +146,7 @@ function Admin() {
                 <span className="button">Choose</span>
                 <span className="label" data-js-label>Select files </span>
                 </div>
-              {sliderimg1 && <button type='submit' id='slider-upload' >Upload</button>}
+              {sliderimg1 && <div>{submitStatus ? <button type='submit' className='slider-upload-success' >Done</button> :<button type='submit' className='slider-upload' >Submit</button>}</div>}
 
               </form>
               <br />
